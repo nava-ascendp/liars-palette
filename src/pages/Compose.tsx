@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { CompositionElements, getElement } from '../lib/elements';
 import { CanvasViewer } from '../components/CanvasViewer';
 import { ElementPicker } from '../components/ElementPicker';
+import { AdBanner } from '../components/AdBanner';
 import { generateSvgCanvas } from '../lib/generators/svg';
 import { getAnonId, getPseudonym } from '../lib/anonId';
 import { isNearDuplicatePrompt } from '../lib/promptSimilarity';
@@ -47,7 +48,6 @@ export const Compose: React.FC<ComposeProps> = ({ setActiveTab }) => {
         }
       })
       .catch(() => {
-        // Fallback default prompt
         setTodayCanvas({ id: 'DAY-TODAY' });
       });
   }, []);
@@ -85,11 +85,9 @@ export const Compose: React.FC<ComposeProps> = ({ setActiveTab }) => {
         }),
       });
 
-      // Show success feedback
       setSuccess(true);
       setTimeout(() => setActiveTab('detective'), 1500);
     } catch (err) {
-      // Local fallback success mode if API server is not running
       setSuccess(true);
       setTimeout(() => setActiveTab('detective'), 1500);
     } finally {
@@ -186,6 +184,9 @@ export const Compose: React.FC<ComposeProps> = ({ setActiveTab }) => {
               </>
             )}
           </button>
+
+          {/* Adsterra 300x250 Banner */}
+          <AdBanner type="300x250" />
         </div>
 
         {/* Right Element Selection Controls */}
