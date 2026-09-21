@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { CompositionElements, getElement } from '../lib/elements';
 import { CanvasViewer } from '../components/CanvasViewer';
 import { MuralGrid, MuralTile } from '../components/MuralGrid';
+import { AdBanner } from '../components/AdBanner';
 import { Flame, Sparkles, Clock, ArrowRight, Eye, Brush, Trophy, Users, ShieldAlert } from 'lucide-react';
 
 interface HomeProps {
@@ -30,7 +31,6 @@ export const Home: React.FC<HomeProps> = ({ setActiveTab, playerStats }) => {
     comp: 'comp-1',
   };
 
-  // Demo mural tiles
   const muralTiles: MuralTile[] = Array.from({ length: 14 }).map((_, i) => {
     const d = new Date(Date.now() - (13 - i) * 86400_000).toISOString().slice(0, 10);
     if (i === 4 || i === 8) {
@@ -107,6 +107,9 @@ export const Home: React.FC<HomeProps> = ({ setActiveTab, playerStats }) => {
         </div>
       </div>
 
+      {/* 320x50 Adsterra Mobile Leaderboard Banner */}
+      <AdBanner type="320x50" />
+
       {/* Live Activity & Social Proof Counter */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 text-center space-y-1">
@@ -128,6 +131,9 @@ export const Home: React.FC<HomeProps> = ({ setActiveTab, playerStats }) => {
           <span className="block text-2xl font-extrabold text-purple-400 font-mono">05h 42m</span>
         </div>
       </div>
+
+      {/* Adsterra Native Banner */}
+      <AdBanner type="native" />
 
       {/* Public Mural Streak Preview Section */}
       <div className="space-y-4">
