@@ -8,6 +8,7 @@ import { Gallery } from './pages/Gallery';
 import { Profile } from './pages/Profile';
 import { Studio } from './pages/Studio';
 import { SalonSim } from './pages/SalonSim';
+import { AdBanner } from './components/AdBanner';
 import { getAnonId } from './lib/anonId';
 
 export function App() {
@@ -53,6 +54,11 @@ export function App() {
         {activeTab === 'studio' && <Studio />}
         {activeTab === 'salon' && <SalonSim />}
       </main>
+
+      {/* Global Ad Banner before footer */}
+      <div className="max-w-7xl mx-auto px-4 w-full">
+        <AdBanner type="320x50" />
+      </div>
 
       {/* Footer */}
       <footer className="border-t border-slate-800/80 bg-slate-950/80 py-6 text-center text-xs font-mono text-slate-500">
